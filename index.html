@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beteglovak — Webshop</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/sytle.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="" crossorigin="anonymous" />
+</head>
+<body>
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <div class="brand">
+        <span class="logo-accent">🐎</span>Beteglovak
+      </div>
+      <ul class="nav-links">
+        <li><a href="#" class="active">Főoldal</a></li>
+        <li><a href="#shop">Beteglovak</a></li>
+        <li><a href="#contact">Kapcsolat</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="tipBtn" class="btn btn-outline">Tippek</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner container">
+      <h1>Üdvözlünk a <span class="highlight">Beteglovak</span> webshopban</h1>
+      <p class="lead">Megbízható források és különleges, minden állapotú lovak - kizárólag válogatott stílusban.</p>
+      <div class="hero-ctas">
+        <a href="#shop" class="btn btn-primary">Ugrás a lovakhoz</a>
+        <a href="#contact" class="btn btn-ghost">Kapcsolatfelvétel</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container main-grid">
+    <section class="info-cards" aria-labelledby="info-title">
+      <h2 id="info-title">Tudnivalók</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card-body">
+            <h3>Mesterségesen “speciális” egyedek</h3>
+            <p>Szinte bármilyen állapotban kínáljuk különleges lovainkat — részletes leírással.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <h3>Megbízható orvosok</h3>
+            <p>Orvosi konzultáció és kiszállás az ország minden részére — privát, diszkrét szolgáltatás.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <h3>100%-os váráslói elégedettséget kinálunk</h3>
+            <p>Peti: Megbizható oldal. Probléma nélkül megkaptam a lovamat, olyan szarul ahogyan hirdették.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="shop" class="shop-section">
+      <h2>Elérhető lovak</h2>
+      <div class="product-grid">
+        <div class="product">
+          <div class="product-media placeholder"><img src="media/szeles.jpeg" width="100%" height="110%" alt=""></div>
+          <div class="product-body">
+            <h4>Szelelő Vész</h4>
+            <p class="muted">Kor: 7 év • Állapot: enyhén szeles</p>
+            <div class="product-actions">
+              <span class="price">€420</span>
+              <button class="btn btn-sm">Részletek</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="product-media placeholder">🩺</div>
+          <div class="product-body">
+            <h4>Köhögő Kincs</h4>
+            <p class="muted">Kor: 4 év • Állapot: diagnosztizált</p>
+            <div class="product-actions">
+              <span class="price">€350</span>
+              <button class="btn btn-sm">Részletek</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="product-media placeholder">🦴</div>
+          <div class="product-body">
+            <h4>Rikító Rakoncátlan</h4>
+            <p class="muted">Kor: 10 év • Állapot: krónikus</p>
+            <div class="product-actions">
+              <span class="price">€699</span>
+              <button class="btn btn-sm">Részletek</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <h2>Kapcsolat</h2>
+      <p class="muted">Írj nekünk, és mi visszahívunk. (Vagy a lovat küldjük... attól függ.)</p>
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Köszönjük — hamarosan jelentkezünk!');">
+        <input type="text" placeholder="Név" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Üzenet" rows="4" required></textarea>
+        <div class="form-actions">
+          <button class="btn btn-primary">Küldés</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <strong>Beteglovak</strong> 2025 — Minden jog fenntartva</div>
+      <div class="social">
+        <a href="#" aria-label="facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="mail"><i class="fa fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="tipModal" class="modal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="tipTitle">
+      <button class="modal-close" aria-label="Bezárás">&times;</button>
+      <h3 id="tipTitle">Tippek a vásárláshoz</h3>
+      <ul>
+        <li>Mindig olvasd el az állapotleírást — különben meglepetés érhet.</li>
+        <li>Kérj orvosi papírokat, ha bizonytalan vagy.</li>
+        <li>Szállítás csak a reggeli órákban. (A lovak alszanak délután.)</li>
+      </ul>
+      <div class="modal-actions">
+        <button class="btn btn-primary modal-ok">Értem</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const tipBtn = document.getElementById('tipBtn');
+      const modal = document.getElementById('tipModal');
+      const closeBtn = modal.querySelector('.modal-close');
+      const okBtn = modal.querySelector('.modal-ok');
+
+      function openModal() {
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      tipBtn.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+      okBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+    })();
+  </script>
+</body>
+</html>
