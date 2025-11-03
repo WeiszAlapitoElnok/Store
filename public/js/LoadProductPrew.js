@@ -9,10 +9,7 @@ async function loadProducts() {
         // megjelenítés
         const grid = document.getElementById('product-grid');
         grid.innerHTML = ''; // előző tartalom törlése
-        let i = 0;
-    products.forEach(p => {
-        if(i < 3) return;
-        i++;
+    products.slice(0,3).forEach(p => {
       const card = document.createElement('div');
       card.classList.add('product');
 
