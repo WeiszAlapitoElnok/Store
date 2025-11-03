@@ -1,0 +1,5 @@
+[
+  { "name": "Windy Gale", "desc": "Age: 7 years • Condition: mildly windy", "price": 420 },
+  { "name": "Coughing Treasure", "desc": "Age: 4 years • Condition: diagnosed", "price": 350 },
+  { "name": "Bright Rebel", "desc": "Age: 10 years • Condition: chronic", "price": 699 }
+]
