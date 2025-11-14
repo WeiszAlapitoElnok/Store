@@ -9,13 +9,14 @@ async function loadProducts() {
         // megjelenítés
         const grid = document.getElementById('product-grid');
         grid.innerHTML = ''; // előző tartalom törlése
+        let i = 1;
     products.slice(0,3).forEach(p => {
       const card = document.createElement('div');
       card.classList.add('product');
 
       card.innerHTML = `
         <div class="product-media placeholder">
-          <img src="media/szeles.jpeg" width="100%" height="110%" alt=""><!--p.img_url-->
+          <img src="media/${i}.jpeg" width="100%" height="110%" alt="">
         </div>
         <div class="product-body">
           <h4>${p.name}</h4>
@@ -26,6 +27,7 @@ async function loadProducts() {
           </div>
         </div>
       `;
+      i++;
       grid.appendChild(card);
 });
       } catch (err) {

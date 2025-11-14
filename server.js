@@ -3,6 +3,7 @@ import mysql from 'mysql2';
 import cors from 'cors';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import fs from 'fs';
 
 
 const app = express();
@@ -34,15 +35,56 @@ db.connect(err => {
   }
 });
 
+// Load local products JSON to build a fallback name->img mapping
+let localImageMap = {};
+try {
+  const dataPath = path.join(__dirname, 'data', 'products.json');
+  const raw = fs.readFileSync(dataPath, { encoding: 'utf8' });
+  const localProducts = JSON.parse(raw);
+  // Map by name to media/<index+1>.jpeg (matches existing media files)
+  localProducts.forEach((p, idx) => {
+    if (p.name) {
+      localImageMap[p.name] = `/media/${idx + 1}.jpeg`;
+    }
+  });
+} catch (e) {
+  // ignore if file missing
+  console.warn('⚠️ Could not build local image map:', e.message);
+}
+
 // API endpoint
 app.get('/api/products', (req, res) => {
-  db.query('SELECT name, description, price FROM product', (err, results) => {
+  const search = (req.query.search || '').trim();
+  const like = `%${search}%`;
+  const sql = search
+    ? ['SELECT name, description, price, img_url FROM product WHERE name LIKE ?', [like]]
+    : ['SELECT name, description, price, img_url FROM product', []];
+
+  db.query(sql[0], sql[1], (err, results) => {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'DB lekérdezés hiba' });
-    } else {
-      res.json(results);
+      return;
     }
+
+    // Attach fallback img_url from local mapping when DB row doesn't include one
+    const transformed = results.map((row, idx) => {
+      const r = { ...row };
+      if (!r.img_url) {
+        // try by exact name match
+        if (r.name && localImageMap[r.name]) {
+          r.img_url = localImageMap[r.name];
+        } else {
+          // fallback to media by index (1-based)
+          r.img_url = `/media/${idx + 1}.jpeg`;
+        }
+      }
+      // ensure description field exists (some data sources use 'desc')
+      if (!r.description && r.desc) r.description = r.desc;
+      return r;
+    });
+
+    res.json(transformed);
   });
 });
 
