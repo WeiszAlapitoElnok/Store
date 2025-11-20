@@ -18,13 +18,13 @@
   <!-- Header -->
   <header class="nav-wrap">
     <nav class="nav container">
-      <div class="brand">
-        <span class="logo-accent"><a href="index.html">🐎</span>Sick Stallion</a>
-      </div>
+      <a href="index.html" class="brand" aria-label="Home">
+        <span class="logo-accent">🐎</span>Sick Stallion
+      </a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="Shop.html" class="active">Webshop</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="Shop.html" id="nav-active" class="active">Webshop</a></li>
+        <li><a href="" onclick="CartContent()"><i class="fa fa-shopping-cart cart-icon" aria-hidden="true"></i></a></li>
       </ul>
     </nav>
   </header>
